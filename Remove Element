@@ -1,0 +1,52 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+
+        
+        // INPLACE SOLUTION
+        
+        if(nums.size()==0){
+
+            return  0;
+        }
+        int i=0;
+
+        int n=nums.size();
+
+        while(i<n){
+
+            while(i<n && nums[i]!=val){
+
+                i++;
+            }
+            cout<<i<<" "<<n;
+            
+            if(i==n){
+
+                return n;
+            }
+
+            int curr=i;
+            while(i<n && nums[i]==val){
+
+                i++;
+            }
+
+            if(i<n){
+
+                swap(nums[curr],nums[i]);
+
+            }
+
+            if(i==n){
+
+                return curr;
+            }
+
+            i=curr+1;
+        }
+
+        return 1;
+        
+    }
+};
