@@ -1,0 +1,38 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+
+
+        //NO EXTRA SPACE TAKEN
+
+        //USE TWO POINTER TO COMPARE TWO STARTING INDEX AND IF ELEMENT IN NUMS2 IS SMALLER THAN SWAP WITH ELEMENT IN NUM1 ,HOWEVER FOR FURTHER ITERATION NUMS2 MUST BE SORTED SO WE SORT THE ARRAY 
+        
+        int i=0,j=0;
+
+        while(i<m && j<n){
+
+            if(nums1[i]<=nums2[j]){
+
+                i++;
+            }
+            else{
+
+                swap(nums1[i],nums2[j]);
+                sort(nums2.begin(),nums2.end());
+                i++;
+                
+            }
+        }
+
+        while(j!=n){
+
+            nums1[i]=nums2[j];
+            i++;
+            j++;
+
+        }
+
+        
+        
+    }
+};
