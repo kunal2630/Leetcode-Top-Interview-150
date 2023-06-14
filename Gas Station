@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+
+    
+    //FOR TRAVELLING AROUND THE CIRCUIT THE TOTAL FUEL MUST NOT BE NEGATIVE AFTER COMPLETE LOOP AND ALSO AT ANY TIME IF MY CURRENT FUEL BECOMES 0 THEN ALSO TRAVELLING NOT POSSIBLE
+
+
+    int totalfuel=0;
+    int currfuel=0;
+    int ans=0;
+
+    for(int i=0;i<gas.size();i++){
+
+        totalfuel +=gas[i]-cost[i];
+        currfuel +=gas[i]-cost[i];
+
+        if(currfuel<0){
+
+            currfuel=0;
+            ans=i+1;
+        }
+    }
+
+    if(totalfuel<0){
+
+        return -1;
+    }
+
+    return ans;
+
+
+
+        
+        
+    }
+};
