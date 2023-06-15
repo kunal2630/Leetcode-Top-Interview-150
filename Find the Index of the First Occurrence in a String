@@ -1,0 +1,58 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+
+         /*
+
+        //METHOD 1
+
+        return haystack.find(needle);
+
+
+        */
+
+
+        //METHOD 2
+
+        int h=haystack.length();
+        int n=needle.length();
+
+        int i=0;
+        int j=0;
+        
+        
+        while(i<h && j<n){
+
+            if(haystack[i]!=needle[j]){
+
+                i++;
+
+            }
+            else{
+                 
+                 int idx=i;
+                 while(i<h && j<n && haystack[i] == needle[j]){
+
+                    i++;
+                    j++;
+                }
+
+                if(j==n){
+
+                    return idx;
+
+
+                }
+                else{
+
+                    j=0;
+                    i=idx+1;
+                }
+
+            }
+        }
+
+        return -1;
+        
+    }
+};
