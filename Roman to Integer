@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+
+       //IF WE START FROM END AND START MOVING LEFT , THEN EVERYTIME WE ENCOUNTER A SYMBOL WHOSE VALUE IS LESS THAN ITS NEIGHBOUR VALUE(i+1) then in that case we subtract its value from its current value and also we dont need to store rank for every element we can just compare its value if it is less then its rank is less
+
+        int n=s.length();
+        int ans=0;
+        unordered_map< char,pair<int,int> > mp;
+         mp['I']={1,1};
+         mp['V']={2,5};
+          mp['X']={3,10};
+           mp['L']={4,50};
+            mp['C']={5,100};
+             mp['D']={6,500};
+              mp['M']={7,1000};
+            
+
+              ans +=(mp[s[n-1]].second);
+
+              for(int i=n-2;i>=0;i--){
+
+                  
+                      if(mp[s[i]].first>=mp[s[i+1]].first)  ans +=mp[s[i]].second;
+                      else  ans -=mp[s[i]].second;
+                     
+
+                
+              }
+
+              return ans;
+
+        
+       
+    }
+};
