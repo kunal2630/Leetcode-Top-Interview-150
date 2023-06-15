@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+
+        //TOTAL TRAPPED WATER NIKALNA HAI TOH AGAR HM INDIVIDUAL TRAPPED WATER NIKAL LE TOH KAAM HO JAAYEGA
+
+        //KISI BHI EK AREA MEIN TRAPPED WATER KITNA HOGA UTNA HI HOGA JITNA WOH TRAP KR SKE THAT IS MIN( LEFT MAX HEIGHT,RIGHT MAX HEIGHT)
+
+        // SO INDIVIDUAL AREA MEIN KITNA TRAPPED HOGA  MIN( LEFT MAX HEIGHT,RIGHT MAX HEIGHT)-CURRENT HEIGHT
+        
+        
+        int n=height.size();
+        int ans=0;
+        vector<int> left_height(n,0);
+        vector<int> right_height(n,0);
+
+        left_height[0]=height[0];
+        right_height[n-1]=height[n-1];
+
+        for(int i=1;i<n;i++){
+
+            left_height[i]=max(left_height[i-1],height[i]);
+        }
+
+        for(int i=n-2;i>=0;i--){
+
+            right_height[i]=max(right_height[i+1],height[i]);
+        }
+
+        for(int i=0;i<n;i++){
+
+            ans+=min(left_height[i],right_height[i])-height[i];
+        }
+
+        return ans;
+
+        
+    }
+};
