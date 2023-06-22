@@ -1,0 +1,57 @@
+class Solution {
+public:
+
+    int nextnumber(int n){
+
+        int number=0;
+
+        while(n>0){
+              
+              int digit=n%10;
+              number +=( digit* digit);
+              n =n/10;
+        }
+
+        return number;
+    }
+
+    bool isHappy(int n) {
+    
+
+    // A number will never ne equal to 1 if it goes into loop that is we start our operation with some number like 4 and after some operation if it becomes 4 then uit woll go into loop and can never become 1
+
+    // 4 -> 16 -> 37 ->58 ->89 -> 145 -> 42 -> 20 ->4
+
+    //insert element in set and check if current number has ever come before if yes that it will go into loop hence not a happy number 
+
+    set<int> st;
+      
+      while(n!=1){
+           
+        
+          int new_number=nextnumber(n);
+
+       
+
+        if(st.find(new_number)==st.end()){
+
+            st.insert(new_number);
+        }
+
+        else{
+
+            return false;
+
+        }
+
+        n=new_number;
+
+
+      }
+
+        return true;
+
+
+        
+    }
+};
